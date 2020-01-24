@@ -1,60 +1,68 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+    <v-list>
+      <v-subheader>Menu</v-subheader>
+      <v-list-item-group>
+        <v-list-item
+          v-for="item in menuItems"
+          :key="item.title"
+        >
+          <v-list-item-icon>
+            <v-icon v-text="item.icon"></v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
+      
+    </v-navigation-drawer>
+   <v-card
+    color="grey lighten-4"
+    flat
+    tile
+  >
+    <v-toolbar dense dark class="primary">
+      <v-app-bar-nav-icon 
+      @click="drawer = !drawer"
+      class="hidden-sm-and-up"
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+      </v-app-bar-nav-icon>
 
-    <v-content>
-      <HelloWorld/>
-    </v-content>
+      <v-toolbar-title class="white--text">New GSIS Cooperative</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-xs-only" v-for="item in menuItems" :key=" item.title">
+        <v-btn text>
+          <v-icon left>{{ item.icon }}</v-icon>
+          {{ item.title }}
+        </v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+  </v-card>  
+    <main>
+      <router-view></router-view>
+    </main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
+  data () {
+    return {
+      drawer: false,
+      menuItems: [
+        {icon: 'mdi-home', title: 'Home'},
+        {icon: 'mdi-bank', title: 'Services'},
+        {icon: 'mdi-information-outline', title: 'About'},
+        {icon: 'mdi-lock', title: 'Log In'}
+      ]
+    }
+  }
 };
 </script>
