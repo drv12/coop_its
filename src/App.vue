@@ -32,7 +32,16 @@
     class="mb-4"
   >
 
-    <v-app-bar dense dark class="primary" height="80px">
+    <v-app-bar dense dark class="primary" height="100px"
+     src="https://i.ibb.co/3ymNw6N/46516361-314199452510407-3452303920934682624-o.jpg"
+    >
+    <template v-slot:img="{ props }">
+        <v-img
+          v-bind="props"
+          gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+        ></v-img>
+    </template>
+
       <v-app-bar-nav-icon 
       @click="drawer = !drawer"
       class="hidden-sm-and-up"
