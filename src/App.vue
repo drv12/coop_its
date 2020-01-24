@@ -11,6 +11,8 @@
         <v-list-item
           v-for="item in menuItems"
           :key="item.title"
+          router
+          :to="item.link"
         >
           <v-list-item-icon>
             <v-icon v-text="item.icon"></v-icon>
@@ -37,8 +39,14 @@
 
       <v-toolbar-title class="white--text">New GSIS Cooperative</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only" v-for="item in menuItems" :key=" item.title">
-        <v-btn text>
+      <v-toolbar-items class="hidden-xs-only" 
+      >
+        <v-btn text
+          v-for="item in menuItems" 
+          :key=" item.title"
+          route
+          :to="item.link"
+        >
           <v-icon left>{{ item.icon }}</v-icon>
           {{ item.title }}
         </v-btn>
@@ -57,10 +65,10 @@ export default {
     return {
       drawer: false,
       menuItems: [
-        {icon: 'mdi-home', title: 'Home'},
-        {icon: 'mdi-bank', title: 'Services'},
-        {icon: 'mdi-information-outline', title: 'About'},
-        {icon: 'mdi-lock', title: 'Log In'}
+        {icon: 'mdi-home', title: 'Home' ,link: '/'},
+        {icon: 'mdi-bank', title: 'Services' ,link: '/services'},
+        {icon: 'mdi-information-outline', title: 'About' ,link: '/about'},
+        {icon: 'mdi-lock', title: 'Log In' ,link: '/login'}
       ]
     }
   }
