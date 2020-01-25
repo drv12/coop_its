@@ -84,7 +84,7 @@ export default {
       cards: [
         {icon: 'mdi-home', title: 'About', link: '/about'},
         {icon: 'mdi-bank', title: 'Services' , link: '/services'},
-        {icon: 'mdi-lock', title: 'Online Inquiry', link: '/login'}
+        {icon: 'mdi-lock', title: 'Account Inquiry', link: '/login'}
       ],
       citems: [
         {title: 'Pantawin Pasada', src: 'https://i1.wp.com/rmn.ph/wp-content/uploads/2019/01/PANTAWID-PASADA.jpg'}
